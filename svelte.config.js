@@ -1,4 +1,5 @@
 import adapter from "@sveltejs/adapter-static";
+import preprocess from "svelte-preprocess";
 // was "@sveltejs/adapter-auto"
 
 const dev = "production" === "development";
@@ -20,7 +21,12 @@ const config = {
             // change below to your repo name
             base: dev ? "" : "/rqrs",
         }
-    }
+    },
+	preprocess: [
+		preprocess({
+		  postcss: true,
+		}),
+	]
 };
 
 export default config;
