@@ -1,9 +1,33 @@
-import Image from 'next/image'
+'use client'
 
-export default function Home() {
+import { useRouter } from 'next/navigation'
+
+export default async function Home() {
+  const router = useRouter()
+
+  function makeid(length: number) {
+    let result: string = '';
+    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter: number = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+  }
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Hello Requests!</h1>
-    </main>
+    <>
+      <div className="container mx-auto px-4">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => router.push(`/b/${makeid(6)}`)}>
+          Create Request Bin
+        </button>
+      </div>
+    </>
   )
+
 }
