@@ -1,8 +1,6 @@
-'use client'
+import { useRouter } from 'next/router'
 
-import { useRouter } from 'next/navigation'
-
-export default async function Home() {
+export default function Home() {
   const router = useRouter()
 
   function makeid(length: number) {
@@ -20,6 +18,7 @@ export default async function Home() {
 
   return (
     <>
+      <h1>Hola!!</h1>
       <div className="container mx-auto px-4">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
